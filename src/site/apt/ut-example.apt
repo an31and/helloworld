@@ -1,0 +1,83 @@
+~~
+~~ The Maven Unit- and Integration Test Guide (MaUI for short)
+~~
+~~ Copyright (c) 2011 by SoftwareEntwicklung Beratung Schulung (SoEBeS)
+~~ Copyright (c) 2011 by Karl Heinz Marbaise
+~~
+~~ Licensed to the Apache Software Foundation (ASF) under one or more
+~~ contributor license agreements.  See the NOTICE file distributed with
+~~ this work for additional information regarding copyright ownership.
+~~ The ASF licenses this file to You under the Apache License, Version 2.0
+~~ (the "License"); you may not use this file except in compliance with
+~~ the License.  You may obtain a copy of the License at
+~~
+~~    http://www.apache.org/licenses/LICENSE-2.0
+~~
+~~ Unless required by applicable law or agreed to in writing, software
+~~ distributed under the License is distributed on an "AS IS" BASIS,
+~~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~~ See the License for the specific language governing permissions and
+~~ limitations under the License.
+~~
+
+ ------
+ Unit Test Example
+ ------
+ Karl Heinz Marbaise
+ ------
+ 1. April 2011
+ ------
+
+Unit Test Example
+
+  If you like to get your unit tests running you have to follow the
+  {{{http://maven.apache.org/plugins/maven-surefire-plugin/examples/inclusion-exclusion.html}naming conventions}}
+  which are defined by the {{{http://maven.apache.org/plugins/maven-surefire-plugin/index.html}Maven Surefire Plugin}}.
+
+  Assume we have the following structure of a simple Java project which currently consisting of simple class <<<BitMask.java>>> and
+  of course a unit test class <<<BitMaskTest.java>>>. Based on that we get the following folder
+  structure in the unit test example.
+
++--------
+.
+|-- pom.xml
+`-- src
+    |-- main
+    |   `-- java
+    |       `-- com
+    |           `-- soebes
+    |               `-- training
+    |                   `-- maven
+    |                       `-- simple
+    |                           `-- BitMask.java
+    `-- test
+        `-- java
+            `-- com
+                `-- soebes
+                    `-- training
+                        `-- maven
+                            `-- simple
+                                `-- BitMaskTest.java
++--------
+
+  For the sake of clarity the <<<pom.xml>>> excerpt contains only the
+  relevant things. If you don't know what a scope and/or a dependency
+  is, i recommend to take a look into the documentation about
+  {{{http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html}dependency mechanism in Maven}}.
+
+  In this case we use {{{http://www.junit.org}JUnit}} for writing the unit test.
+  This will work as well with {{{http://www.testng.org}TestNG}} if you prefer
+  TestNG over JUnit.
+
+  The following <<<pom.xml>>> snippet shows how to add the dependency of JUnit to your project.
+
+%{include|source=ut-example/pom.xml|snippet=#start}
+
+  If you like to execute the unit tests of the project, which can simply be
+  achieved by calling <<<mvn test>>>, you will get a result like the
+  following:
+
+%{include|source=it/ut-example/build-filtered.log|highlight-type=text}
+
+  []
+
